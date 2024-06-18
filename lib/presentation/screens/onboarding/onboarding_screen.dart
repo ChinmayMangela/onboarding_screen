@@ -17,7 +17,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final _pageController = PageController();
   int pageIndex = 0;
 
-  void _swipeToNextScreen() {
+  void _swipeToTheNextScreen() {
     _pageController.nextPage(
         duration: const Duration(microseconds: 500), curve: Curves.bounceInOut);
   }
@@ -114,7 +114,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
           onPressed: () {},
         ),
-        BuildButton(onTap: _swipeToNextScreen, btnText: 'Next'),
+        BuildButton(onTap: _swipeToTheNextScreen, btnText: 'Next'),
       ],
     );
   }
