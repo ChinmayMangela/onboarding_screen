@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:onboarding_screen/presentation/screens/onboarding/widgets/circle_widget.dart';
-import 'package:onboarding_screen/presentation/screens/onboarding/widgets/onboarding_page.dart';
-import 'package:onboarding_screen/utils/constants/text_strings.dart';
+import 'package:onboarding_screen/providers/pages_list_provider.dart';
 import 'package:onboarding_screen/utils/helper/helper_functions.dart';
+import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -12,21 +12,6 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  final List<Widget> _pages = const [
-    OnboardingPage(
-        titleText: TextStrings.firstPageTitleText,
-        descriptionText: TextStrings.firstPageDescriptionText,
-        imageUrl: TextStrings.firstPageImageUrl),
-    OnboardingPage(
-        titleText: TextStrings.secondPageTitleText,
-        descriptionText: TextStrings.secondPageDescriptionText,
-        imageUrl: TextStrings.secondPageImageUrl),
-    OnboardingPage(
-        titleText: TextStrings.thirdPageTitleText,
-        descriptionText: TextStrings.thirdPageDescriptionText,
-        imageUrl: TextStrings.thirdPageImageUrl),
-  ];
-
   @override
   Widget build(BuildContext context) {
     double screenWidth = HelperFunctions.getScreenWidth(context);
@@ -38,6 +23,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   Widget _buildBody(double screenWidth, double screenHeight) {
+    final pagesProvider = Provider.of<PagesListProvider>(context);
     return Stack(
       children: [
         Positioned(
@@ -46,7 +32,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: CircleWidget(
             height: screenHeight * 0.7,
             width: screenWidth * 0.7,
-            color: const Color(0xFF552481),
+            color1: const Color(0xFFED02D3),
+            color2: const Color(0xFF9C088B),
           ),
         ),
         Positioned(
@@ -55,7 +42,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: CircleWidget(
             height: screenHeight * 0.4,
             width: screenWidth * 0.4,
-            color: const Color(0xFF70E6FB),
+            color1: const Color(0xFF70E6FB),
+            color2: const Color(0xFF47B6C8),
           ),
         ),
         Positioned(
@@ -64,7 +52,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: CircleWidget(
             height: screenHeight * 0.7,
             width: screenWidth * 0.7,
-            color: const Color(0xFF552481),
+            color1: const Color(0xFF552481),
+            color2: const Color(0xFF3A145E),
           ),
         ),
         Positioned(
@@ -73,13 +62,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           child: CircleWidget(
             height: screenHeight * 0.7,
             width: screenWidth * 0.7,
-            color: const Color(0xFF1F4470),
+            color1: const Color(0xFF1F4470),
+            color2: const Color(0xFF0C325E),
           ),
         ),
         PageView.builder(
-          itemCount: _pages.length,
+          itemCount: pagesProvider.pages.length,
           itemBuilder: (context, index) {
-            return _pages[index];
+            return pagesProvider.pages[index];
           },
         ),
       ],
