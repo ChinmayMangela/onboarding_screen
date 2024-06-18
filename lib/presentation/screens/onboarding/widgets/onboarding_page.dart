@@ -29,9 +29,7 @@ class OnboardingPage extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: screenHeight * 0.17,
-                backgroundImage: NetworkImage(
-                  imageUrl,
-                ),
+                backgroundImage: AssetImage(imageUrl),
               ),
               SizedBox(
                 height: screenHeight * 0.05,

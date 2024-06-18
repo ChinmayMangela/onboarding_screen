@@ -20,7 +20,7 @@ class GradientContainer extends StatelessWidget {
     final containerWidth = screenWidth * 0.8;
     final containerHeight = screenHeight * 0.35;
     return Container(
-      padding: EdgeInsets.all(screenHeight * 0.05),
+      padding: EdgeInsets.all(screenHeight * 0.04),
       decoration: BoxDecoration(
         gradient: _buildGradient(),
         borderRadius: BorderRadius.circular(30),
